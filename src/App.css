@@ -1,38 +1,38 @@
-.App {
+html{
+  background-color: rgb(55, 55, 55);
+}
+.lawyer{
+  margin: auto;
+  border-style: dashed;
+}
+.search{
   text-align: center;
-}
+  margin: 1rem auto;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.table_wrapper{
+  background-color: rgb(193, 230, 230);
+  font-size: large;
+  color: aliceblue;
+  margin:auto;
+  margin-top: 1rem;
+  padding: 1rem;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+table{
+  border-spacing: 0px 5px;
 }
-
-.App-link {
-  color: #61dafb;
+.row{
+  transition: 0.2s;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.row:hover{
+  transform: scale(1.03);
+}
+td{
+  background-color: rgb(69, 98, 98);
+  padding: 1rem;
+}
+th{
+  font-size: larger;
+  background-color: rgb(46, 65, 65);
+  padding: 1rem;
 }
