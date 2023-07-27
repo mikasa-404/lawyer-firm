@@ -2,7 +2,7 @@ import React from "react";
 import { DATA } from "../utils/DATA";
 import { useState } from "react";
 import { filterData } from "../utils/filter";
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable, Draggable } from "react-beautiful-dnd";
 
 const LawyerTable = () => {
   const [LawData, setLawData] = useState(DATA);
@@ -35,24 +35,38 @@ const LawyerTable = () => {
           <option value="option 2">Speciality</option>
         </select> */}
       </div>
-      
       <table className="table_wrapper">
-        <tbody>
-          <tr className="headRow">
-            <th>Name</th>
-            <th>Speciality</th>
-            <th>Phone</th>
-          </tr>
-          {filteredData.map((data) => {
-            return (
-              <tr key={data.key} className="row">
-                <td>{data.name}</td>
-                <td>{data.speciality}</td>
-                <td>{data.phone}</td>
+        <Droppable droppableId="lawyers">
+          {(provided) => (
+            <tbody {...provided.droppableProps} ref={provided.innerRef}>
+              <tr className="headRow">
+                <th>Name</th>
+                <th>Speciality</th>
+                <th>Phone</th>
               </tr>
-            );
-          })}
-        </tbody>
+              {filteredData.map((data, index) => {
+                return (
+                  <Draggable
+                    key={data.key}
+                    draggableId={data.key}
+                    index={index}
+                  >
+                    {(provided) => (
+                      <tr
+                        className="row"
+                        {...provided.draggableProps} {...provided.dragHandleProps}
+                        ref={provided.innerRef}>
+                        <td>{data.name}</td>
+                        <td>{data.speciality}</td>
+                        <td>{data.phone}</td>
+                      </tr>
+                    )}
+                  </Draggable>
+                );
+              })}
+            </tbody>
+          )}
+        </Droppable>
       </table>
     </div>
   );
